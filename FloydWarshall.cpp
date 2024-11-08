@@ -8,7 +8,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 109;
+const int N = 100, inf = 2e9 + 9;
 int d[N][N], nextof[N][N];
 int n;
 
@@ -16,7 +16,7 @@ void init() {
   for (int i = 1; i <= n; ++i) {
     for (int j = 1; j <= n; ++j) {
       nextof[i][j] = j;
-      d[i][j] = 999;
+      d[i][j] = inf;
       if (i == j) d[i][j] = 0;
     }
   }
@@ -58,11 +58,11 @@ int main() {
   }
   
   cal();
-  for (int i = 1; i <= n; ++i) {
-    for (int j = 1; j <= n; ++j) {
-      cout << setw(3) << d[i][j] << " \n"[j == n];
-    }
-  }
+  // for (int i = 1; i <= n; ++i) {
+  //   for (int j = 1; j <= n; ++j) {
+  //     cout << setw(3) << d[i][j] << " \n"[j == n];
+  //   }
+  // }
 
   vector<int> path = findPath(1, 3);
   for (auto i: path) {
