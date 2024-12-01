@@ -37,7 +37,7 @@ struct Mat {
   } 
 };
 
-Mat Mat_Expo(Mat a, int n) {
+Mat Mat_Expo(Mat a, long long n) {
   Mat ans(a.sz, 1);  // identity matrix
   while (n) {
     if (n & 1) {
