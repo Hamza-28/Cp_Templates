@@ -8,6 +8,9 @@ struct Point {
 		this->x = x;
 		this->y = y;
 	}	
+	bool operator ==(const Point& p) {
+		return (this->x == p.x and this->y == p.y);
+	}
 	void operator -=(const Point& p) {
 		this->x -= p.x;
 		this->y -= p.y;
