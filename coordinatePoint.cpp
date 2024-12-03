@@ -53,7 +53,6 @@ struct Point {
 	}
 };
 
-// convex hull
 void solve() {
 	int n;
 	cin >> n;
@@ -66,17 +65,16 @@ void solve() {
 	vector<Point> hull;
 	for (int rep = 0; rep < 2; ++rep) {
 		const int sz = hull.size();
-		for (int i = 0; i < n; ++i) {
+		for (auto C: v) {
 			while (hull.size() >= sz + 2) {
 				Point A = hull.end()[-2];
 				Point B = hull.end()[-1];
-				Point C = v[i];
 				if (((B - A) * (C - A)) <= 0) {
 					break;
 				}
 				hull.pop_back();
 			}
-			hull.push_back(v[i]);
+			hull.push_back(C);
 		}
 		hull.pop_back();
 		reverse(v.begin(), v.end());
