@@ -12,7 +12,12 @@ struct Point {
 		return (this->x == p.x and this->y == p.y);
 	}
 	bool operator <(const Point& p) {
-		return make_pair(this->x, this->y) < make_pair(p.x, p.y);
+		return make_pair(this->x, this->y) < make_pair(p.x, p.y); // with respect to x-axis
+		// // with respect to angle from (0, 0)
+		// if (*this * p == 0) {
+		// 	return dis() < p.dis();
+		// }
+		// return (*this * p < 0);
 	}
 	void operator -=(const Point& p) {
 		this->x -= p.x;
@@ -53,6 +58,7 @@ struct Point {
 	}
 };
 
+// upper and lower part
 void solve() {
 	int n;
 	cin >> n;
@@ -82,6 +88,50 @@ void solve() {
 
 	cout << hull.size() << "\n";
 	for (auto p: hull) {
+		cout << p << "\n";
+	}
+}
+
+// sorting by angle
+void solve() {
+	int n;
+	cin >> n;
+	vector<Point> v(n);
+	for (int i = 0; i < n; ++i) {
+		cin >> v[i];
+		if (make_pair(v[i].x, v[i].y) < make_pair(v[0].x, v[0].y)) {
+			swap(v[i], v[0]);
+		}
+	}
+	for (int i = 1; i < n; ++i) {
+		v[i] -= v[0];
+	}
+	sort(v.begin() + 1, v.end());
+
+	int j = n - 1;
+	while (j >= 2 and v[j] * v[j - 1] == 0) {
+		--j;
+	}
+	reverse(v.begin() + j, v.end());
+
+	vector<Point> hull;
+	hull.push_back(Point{0, 0});
+	for (int i = 1; i < n; ++i) {
+		auto C = v[i];
+		while (hull.size() >= 2) {
+			Point A = hull.end()[-2];
+			Point B = hull.end()[-1];
+			if (((B - A) * (C - A)) <= 0) {
+				break;
+			}
+			hull.pop_back();
+		}
+		hull.push_back(C);
+	}
+
+	cout << hull.size() << "\n";
+	for (auto& p: hull) {
+		p += v[0];
 		cout << p << "\n";
 	}
 }
