@@ -16,7 +16,6 @@ void buildTable(int n) {
 		}
 	}
 }
-
 int maxQuery(int i, int j, int n) {
 	if (j < 0 or i >= n) return INT32_MIN;
 	int k = __bit_width(j - i + 1) - 1;
