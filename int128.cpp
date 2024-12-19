@@ -8,7 +8,7 @@ istream& operator >>(istream& cin, __int128& x) {
 	return cin;
 }
 
-ostream& operator <<(ostream& cout, __int128& x) {
+ostream& operator <<(ostream& cout, __int128 x) {
 	string s;
 	while (x) {
 		s += (x % 10) + '0';
