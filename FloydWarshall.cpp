@@ -8,7 +8,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 100, inf = 2e9 + 9;
+const int N = 100, inf = 1e9 + 9;
 int d[N][N], nextof[N][N];
 int n;
 
