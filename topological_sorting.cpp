@@ -85,7 +85,7 @@ void dfs(int v) {
 
 void topological_sort() {
 	for (int i = 0; i < n; ++i) {
-		if (!visited[i]) dfs(i);
+		if (!vis[i]) dfs(i);
 	}
 	reverse(ans.begin(), ans.end());
 }
