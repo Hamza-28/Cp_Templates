@@ -61,3 +61,38 @@ int main() {
 
 	return 0;
 }
+
+
+// using DFS
+	
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 1e5 + 9;
+vector<int> adj[N];
+vector<int> ans;
+bool vis[N];
+
+void dfs(int v) {
+	vis[v] = true;
+	for (int u : adj[v]) {
+		if (!vis[u]) dfs(u);
+	}
+	ans.push_back(v);
+}
+
+void topological_sort() {
+	for (int i = 0; i < n; ++i) {
+		if (!visited[i]) dfs(i);
+	}
+	reverse(ans.begin(), ans.end());
+}
+
+int main() {
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+
+	return 0;
+}
