@@ -24,7 +24,6 @@ void dfs(int a) {
 }
 
 int getKthAncestor(int node, int k) {
-	if (k == 0) return node;
 	if (depth[node] < k) return -1;
 	for (int i = 0; i < LOG; ++i) { 
 		if (k & (1 << i)) {
